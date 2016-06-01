@@ -36,8 +36,6 @@ head(vetdata)
 
 #Start working here, commit and push changes when ready.
 
-vetdata[which(vetdata$Total==max(vetdata$Total)),]
-vetdata[which(vetdata$Total==min(vetdata$Total)),]
 
 
 
