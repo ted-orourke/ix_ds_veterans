@@ -17,11 +17,11 @@
 
 # Go to this link to download the data:
 # https://drive.google.com/file/d/0B3UuwwbJdu0VYnExbTh0aEFYcDg/view?usp=sharing
-  
-setwd("C:/Users/arthu/Downloads/")
+
+#setwd("C:/Users/arthu/Downloads/")
 vetdata <- read.csv("vet_pop_2014.csv")
 
-head(vetdata)
+#head(vetdata)
 
 #=================================================================================
 ### SECTION 1: 
@@ -74,10 +74,24 @@ head(vetdata)
 #=================================================================================
 ### SECTION 4: 
 ### Which state has the most HISPANIC race veterans? 
+vetdata$State[vetdata$Hispanic.or.Latino..of.any.race. == max(vetdata$Hispanic.or.Latino..of.any.race.)]
+#Texas
+
 ### The least? Which state has the closest value to the average?
+# Vermont has the least, Washington is closest to average.
+vetdata$State[vetdata$Hispanic.or.Latino..of.any.race. == min(vetdata$Hispanic.or.Latino..of.any.race.)]
+avg_Hispanics <- mean(vetdata$Hispanic.or.Latino..of.any.race.)
+vetdata$State[abs(vetdata$Hispanic.or.Latino..of.any.race. - avg_Hispanics) == min(abs(vetdata$Hispanic.or.Latino..of.any.race. - avg_Hispanics))]
 
 ### Which state has the greatest percentage of HISPANIC veterans?
+#New Mexico has the greatest percentage of Hispanics
+vetdata$State[vetdata$Hispanic.or.Latino..of.any.race./vetdata$Total == max(vetdata$Hispanic.or.Latino..of.any.race./vetdata$Total)]
+
 ### The lowest percentage? Which state has the closest value to the average percentage?
+#West Virginia has the lowest percentage.  DC is the closest to the average percentage.
+vetdata$State[vetdata$Hispanic.or.Latino..of.any.race./vetdata$Total == min(vetdata$Hispanic.or.Latino..of.any.race./vetdata$Total)]
+avg_Percent <- mean(vetdata$Hispanic.or.Latino..of.any.race./vetdata$Total)
+vetdata$State[abs(vetdata$Hispanic.or.Latino..of.any.race./vetdata$Total - avg_Percent) == min(abs(vetdata$Hispanic.or.Latino..of.any.race./vetdata$Total - avg_Percent))]
 
 ### Print out the answers.
 #=================================================================================
